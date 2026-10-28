@@ -61,6 +61,7 @@ These are descriptive findings from the dataset. A record below reorder point is
 The report contains two pages:
 
 ### Executive Overview
+![Executive Overview dashboard](Executive_Overview.png)
 - Total recorded units sold
 - Total records
 - Average inventory level
@@ -72,6 +73,7 @@ The report contains two pages:
 - Recorded sales versus demand forecast
 
 ### Inventory & Replenishment
+![Inventory and Replenishment dashboard](Inventory_and_Replenishment.png)
 - Records below reorder point by warehouse
 - Top 10 SKUs by records below reorder point
 - Average supplier lead time by supplier
