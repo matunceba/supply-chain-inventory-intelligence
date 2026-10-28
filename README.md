@@ -84,8 +84,8 @@ The report contains two pages:
 
 ## Documentation
 
-- [Data Dictionary](Documentation/Data_Dictionary.md)
-- [Data Preparation and Validation](Documentation/Data_Preparation_and_Validation.md)
+- [Data Dictionary](Data_Dictionary.md)
+- [Data Preparation and Validation](Data_Preparation_and_Validation.md)
 
 ## Limitations
 
