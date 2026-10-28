@@ -8,8 +8,6 @@ This project analyses supply-chain data to explore recorded sales, inventory lev
 
 The objective is to demonstrate how SQL-based analysis and interactive Power BI reporting can help stakeholders investigate inventory risks and support data-informed replenishment decisions.
 
-**Important:** This is an independent portfolio project using a dataset that is not Clicks Group data. It does not represent work performed for Clicks Group or another employer.
-
 ## Business Questions
 
 - How do recorded sales change over time and across regions?
