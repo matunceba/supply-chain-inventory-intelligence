@@ -78,9 +78,10 @@ The report contains two pages:
 
 ## Repository Structure
 
-- `SQL/` — SQL analysis scripts
-- `PowerBI/` — Power BI report file
-- `Documentation/` — Data dictionary and data preparation/validation notes
+- `README.md` — Project overview, analytical findings, methodology and limitations.
+- `SQL` analysis scripts — 45 scripts covering data validation, aggregation, trend analysis, inventory exceptions and reporting metrics.
+- `Supply_Chain_Inventory_Intelligence.pbix` — Interactive Power BI report.
+- `Documentation/` — Data dictionary and data preparation and validation documentation.
 
 ## Documentation
 
