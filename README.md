@@ -1,110 +1,266 @@
+
 # Supply Chain & Inventory Intelligence
 
-**A self-directed data analytics portfolio project using SQL Server and Power BI**
+**An end-to-end data analytics and data science portfolio project using SQL Server, Power BI and Python.**
 
-## Project Overview
+## 1. Project Overview
 
-This project analyses supply-chain data to explore recorded sales, inventory levels, replenishment exceptions, supplier lead times and demand forecast accuracy.
+This project investigates supply chain and inventory operations using a structured dataset containing daily sales, inventory, replenishment, supplier and demand forecast information.
 
-The objective is to demonstrate how SQL-based analysis and interactive Power BI reporting can help stakeholders investigate inventory risks and support data-informed replenishment decisions.
+It demonstrates an end-to-end analytical workflow, combining:
 
-## Business Questions
+- Data preparation and quality assessment.
+- SQL-based data validation and analysis.
+- Exploratory data analysis.
+- Statistical analysis and hypothesis testing.
+- Predictive modelling and model evaluation.
+- Power BI reporting and visualisation.
+- Technical documentation and business interpretation.
+
+The objective is to demonstrate how data analysis and statistical modelling can help identify operational patterns, evaluate demand forecasts and support evidence-based supply chain decisions.
+
+## 2. Business Questions
+
+The project investigates the following questions:
 
 - How do recorded sales change over time and across regions?
-- How often is recorded inventory below the reorder point?
-- Which warehouses and SKUs have the most records below their reorder points?
-- How do recorded sales compare with demand forecasts?
-- How do recorded sales differ between promotion and non-promotion records?
-- How do recorded supplier lead times compare across suppliers?
+- How frequently does recorded inventory fall below the reorder point?
+- Which SKUs and warehouses have more records below their reorder points?
+- How accurately does the supplied demand forecast reflect actual sales?
+- How do recorded sales differ between promotion and non-promotion observations?
+- What relationships can be identified between inventory, sales and supplier lead times?
+- Can historical sales information help predict next-day demand?
+- How do statistical and machine learning models compare with simple forecasting benchmarks?
 
-## Dataset Overview
+## 3. Dataset Overview
+
+The project uses `supply_chain_dataset1.csv`.
 
 | Attribute | Value |
-|---|---|
+|---|---:|
 | Records | 91,250 |
 | Columns | 15 |
-| Date coverage | 1 January–30 December 2024 |
+| Date coverage | 1 January – 30 December 2024 |
 | SKUs | 50 |
 | Warehouses | 5 |
 | Suppliers | 10 |
 | Regions | 4 |
+| SKU–Warehouse groups | 250 |
 
-The source dataset's original provenance and redistribution permissions have not been confirmed. The raw dataset is therefore not included in this repository.
+The dataset contains daily operational information, including sales, inventory levels, reorder points, order quantities, supplier lead times, prices, promotion indicators and demand forecasts.
 
-## Tools and Technologies
+The original dataset's provenance and redistribution permissions have not been confirmed. The raw CSV is therefore not included in this public repository.
 
-- **SQL Server and SQL Server Management Studio (SSMS):** Data validation, aggregation, trend analysis, inventory exception analysis and reporting metrics.
-- **Power BI Desktop:** Interactive report development and visual analysis.
-- **DAX:** Measures for sales, inventory and forecast accuracy.
-- **Excel and Power Query:** Data inspection, preparation, type conversion and validation.
+## 4. Project Components
 
-## Project Workflow
+### A. Data Preparation and SQL Analysis
 
-1. Inspected the source structure, columns and data types.
-2. Prepared and validated data using Excel/Power Query.
-3. Imported 91,250 records into SQL Server.
-4. Developed 45 SQL analysis scripts.
-5. Created DAX measures and a date table in Power BI.
-6. Built report pages for executive overview, inventory exceptions, warehouse/SKU analysis, supplier lead times and sales-versus-forecast comparisons.
-7. Documented the data definitions, workflow and analytical limitations.
+SQL Server and SQL Server Management Studio were used to:
 
-## Selected Findings
+- Validate the imported dataset.
+- Inspect table structures and data types.
+- Check missing values, duplicates and numerical ranges.
+- Validate dates, identifiers and flag columns.
+- Analyse sales trends and inventory positions.
+- Examine replenishment and reorder-point patterns.
+- Compare recorded sales with supplied demand forecasts.
+- Investigate supplier, SKU, warehouse and regional performance.
 
-- **4,787 records (5.25%)** had inventory levels below their recorded reorder points.
-- **Overall WAPE:** approximately 12%, based on the recorded units sold and demand forecast in the dataset.
-- Average recorded units sold were approximately **24.91** for promotion records and **19.50** for non-promotion records.
+The SQL component contains 45 analysis scripts.
 
-These are descriptive findings from the dataset. A record below reorder point is a potential replenishment exception, not proof of a stockout. The difference between promotion and non-promotion records does not establish that promotions caused higher sales.
+### B. Exploratory Data Analysis
 
-## Power BI Report
+Python was used to investigate:
 
-The report contains two pages:
+- Sales and demand distributions.
+- Inventory and replenishment patterns.
+- Supplier and warehouse comparisons.
+- Forecast errors across operational dimensions.
+- Monthly sales and forecast performance.
+- Differences between promotion and non-promotion observations.
+- Correlations and other descriptive relationships.
 
-### Executive Overview
-![Executive Overview dashboard](Executive_Overview.png)
-- Total recorded units sold
-- Total records
-- Average inventory level
-- Overall forecast WAPE
-- Monthly recorded sales trends
-- Regional sales comparisons
-- Records below reorder point by region
-- Promotion and non-promotion comparisons
-- Recorded sales versus demand forecast
+### C. Statistical Analysis
 
-### Inventory & Replenishment
-![Inventory and Replenishment dashboard](Inventory_and_Replenishment.png)
-- Records below reorder point by warehouse
-- Top 10 SKUs by records below reorder point
-- Average supplier lead time by supplier
+Statistical methods were used to investigate selected operational relationships.
 
-## Repository Structure
+The analysis included:
 
-- `README.md` — Project overview, analytical findings, methodology and limitations.
-- `SQL` analysis scripts — 45 scripts covering data validation, aggregation, trend analysis, inventory exceptions and reporting metrics.
-- `Supply_Chain_Inventory_Intelligence.pbix` — Interactive Power BI report.
-- `Documentation/` — Data dictionary and data preparation and validation documentation.
+- Descriptive statistics.
+- Pearson and Spearman correlation.
+- ANOVA, Welch's ANOVA and Kruskal–Wallis testing.
+- Regression models with fixed effects.
+- Heteroskedasticity-robust and clustered standard errors.
+- Residual and model diagnostics.
 
-## Documentation
+One finding was that promotion observations had higher average daily sales than non-promotion observations. The adjusted regression estimated an association of approximately 5.40 additional units per observation. This is an observational result and does not establish that promotions caused higher sales.
 
-- [Data Dictionary](Documentation/Data_Dictionary.md)
-- [Data Preparation and Validation](Documentation/Data_Preparation_and_Validation.md)
+The analysis did not find statistically significant evidence of an adjusted association between beginning inventory and daily sales, or of relationships between supplier lead time and the operational outcomes examined.
 
-## Limitations
+### D. Predictive Modelling
+
+The Python predictive modelling component developed one-step-ahead daily sales predictions.
+
+The workflow included:
+
+- Lagged sales features.
+- Rolling mean features.
+- Calendar features.
+- Chronological training, validation and test partitions.
+- Categorical encoding and numerical preprocessing.
+- Seven-day rolling mean benchmark.
+- Linear Regression.
+- Random Forest Regression.
+- Validation and independent test evaluation.
+- Feature importance and permutation importance.
+
+The independent test results were:
+
+| Model | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Seven-Day Rolling Mean | 4.5063 | 5.6986 | 0.0359 |
+| Linear Regression | 7.6764 | 9.1014 | -1.4592 |
+| Random Forest | 5.8751 | 7.2974 | -0.5810 |
+
+The seven-day rolling mean outperformed both machine learning models on the independent test set.
+
+This demonstrates the importance of comparing more complex models against simple benchmarks rather than assuming that machine learning will necessarily improve predictive performance.
+
+### E. Power BI Reporting
+
+Microsoft Power BI Desktop was used to develop an interactive report covering two main areas.
+
+**Executive Overview**
+- Total recorded units sold.
+- Number of records.
+- Average inventory level.
+- Overall forecast WAPE.
+- Monthly sales trends.
+- Regional sales comparisons.
+- Records below reorder point.
+- Promotion and non-promotion comparisons.
+- Recorded sales versus demand forecast.
+
+**Inventory & Replenishment**
+- Inventory records below reorder point by warehouse.
+- SKUs with the highest number of records below reorder point.
+- Average supplier lead time by supplier.
+
+## 5. Selected Findings
+
+The analysis produced the following descriptive and predictive findings:
+
+- 4,787 records (5.25%) had inventory levels below their recorded reorder points.
+- The supplied demand forecast had an overall MAE of approximately 2.38 units and RMSE of approximately 2.99 units.
+- Average recorded sales were approximately 24.91 units for promotion observations and 19.50 units for non-promotion observations.
+- The predictive modelling experiment found that the seven-day rolling mean was more accurate than the Linear Regression and Random Forest models on the independent test set.
+- Average daily sales changed substantially across the chronological modelling partitions, declining from approximately 22.73 units in training to 10.45 in validation before recovering to approximately 15.96 in testing.
+
+These findings describe the supplied dataset and should not automatically be interpreted as evidence of real-world operational causes.
+
+## 6. Important Data and Modelling Limitations
 
 - The original dataset source, currency and detailed business definitions are undocumented.
-- The forecast horizon and forecasting method are unknown.
+- The supplied forecast's original methodology and forecast horizon are unknown.
+- `Stockout_Flag` contains only zero values in the supplied CSV, so it cannot support meaningful stockout classification or variation-based analysis.
+- A record below reorder point represents a potential replenishment exception, not proof of a stockout.
+- The dataset covers approximately one year, which is insufficient to establish recurring annual seasonality.
 - Inventory levels repeated across dates should not be summed and interpreted as current stock.
 - Supplier lead time alone does not establish supplier performance.
-- Replenishment decisions would require additional context, such as demand variability, safety stock, service-level targets, order constraints and confirmed inventory policies.
+- The predictive models were evaluated using chronological partitions, and the observed demand-level changes affected model performance.
+- The statistical findings are observational and do not establish causation.
 
-## Potential Next Steps
+Further operational conclusions would require additional information, including documented business definitions, inventory policies, safety-stock requirements, service-level targets and longer historical data.
 
-- Add a replenishment prioritisation model using documented business rules.
-- Evaluate forecast errors by SKU, warehouse and time period.
-- Incorporate lead-time variability and safety-stock requirements if suitable data becomes available.
-- Extend the dashboard with clearly defined service-level and inventory-risk metrics.
+## 7. Technologies and Tools
 
-## Skills Demonstrated
+| Area | Technologies |
+|---|---|
+| Data preparation | Excel, Power Query |
+| Database | SQL Server |
+| SQL development | SQL Server Management Studio |
+| Programming | Python |
+| Data manipulation | Pandas, NumPy |
+| Visualisation | Matplotlib, Seaborn, Power BI |
+| Statistical analysis | SciPy, Statsmodels |
+| Machine learning | Scikit-learn |
+| Development environment | Google Colab |
+| Version control | Git, GitHub |
 
-SQL querying, data validation, data preparation, analytical reasoning, inventory exception analysis, demand forecast evaluation, DAX measures, Power BI visualisation and technical documentation.
+## 8. Repository Structure
+
+```text
+supply-chain-inventory-intelligence/
+│
+├── Python/
+│   ├── notebooks/
+│   │   ├── 01_Data_Understanding_Supply_Chain.ipynb
+│   │   ├── 02_Exploratory_Data_Analysis_Supply_Chain.ipynb
+│   │   ├── 03_Statistical_Analysis_Supply_Chain.ipynb
+│   │   └── 04_Predictive_Modeling_Supply_Chain.ipynb
+│   │
+│   └── README.md
+│
+├── SQL analysis scripts
+├── Supply_Chain_Inventory_Intelligence.pbix
+├── Data_Dictionary.md
+├── Data_Preparation_and_Validation.md
+└── README.md
+```
+
+## 9. Project Documentation
+
+- [Python Data Science Documentation](Python/README.md)
+- [Data Dictionary](Data_Dictionary.md)
+- [Data Preparation and Validation](Data_Preparation_and_Validation.md)
+
+### Python Notebooks
+
+1. [01 — Data Understanding](Python/notebooks/01_Data_Understanding_Supply_Chain.ipynb)
+2. [02 — Exploratory Data Analysis](Python/notebooks/02_Exploratory_Data_Analysis_Supply_Chain.ipynb)
+3. [03 — Statistical Analysis](Python/notebooks/03_Statistical_Analysis_Supply_Chain.ipynb)
+4. [04 — Predictive Modeling](Python/notebooks/04_Predictive_Modeling_Supply_Chain.ipynb)
+
+## 10. Reproducibility
+
+The Python notebooks were developed in Google Colab.
+
+To reproduce the Python analysis:
+
+1. Open the required notebook in Google Colab.
+2. Obtain the original `supply_chain_dataset1.csv` separately.
+3. Upload the CSV when prompted by the notebook.
+4. Execute the notebook cells in their documented order.
+5. Review the outputs, visualisations and Markdown interpretations.
+
+The source dataset is not distributed in this repository because its original provenance and redistribution permissions have not been confirmed.
+
+## 11. Skills Demonstrated
+
+- Data cleaning and validation.
+- SQL querying and analytical reporting.
+- Exploratory data analysis.
+- Statistical reasoning and hypothesis testing.
+- Regression analysis and statistical diagnostics.
+- Time-series feature engineering.
+- Machine learning model development.
+- Chronological model validation.
+- Forecast evaluation and benchmarking.
+- Data visualisation and Power BI reporting.
+- Technical documentation.
+- Business interpretation and communication of limitations.
+
+## 12. Conclusion
+
+This project demonstrates an integrated approach to supply chain analytics, moving from data preparation and validation through SQL analysis, statistical investigation, predictive modelling and interactive reporting.
+
+An important lesson from the predictive modelling experiment is that a simple, well-chosen benchmark can outperform more complex machine learning models.
+
+The project emphasises analytical discipline, data quality, appropriate statistical interpretation, transparent assumptions and independent model evaluation.
+
+---
+
+**Project:** Supply Chain & Inventory Intelligence  
+**Author:** Nceba Matu  
+**Focus:** Data Science, Statistical Analysis, Predictive Analytics and Supply Chain Intelligence
+
